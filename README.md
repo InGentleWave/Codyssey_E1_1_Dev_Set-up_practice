@@ -23,7 +23,7 @@
 [🏠 목차로](#목차)
  
 ## 실행 환경
-- OS :
+- OS : Ubuntu-26.04 LTS
 - Shell :
 - Docker : 
 - Git :
