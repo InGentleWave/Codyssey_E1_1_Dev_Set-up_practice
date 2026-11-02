@@ -225,8 +225,8 @@ init.defaultbranch=main
 
 ## 11. GitHub 및 VSCode 연동 증거
 
-- GitHub 로그인 완료 캡처 (계정 정보 가림): (링크: evidences/github-login.png)
-- 저장소 연동 완료 캡처: (링크: evidences/vscode-github-link.png)
+- GitHub 로그인 완료 캡처 (계정 정보 가림): [링크](evidences/vscode-github-login.png)
+- 저장소 연동 완료 캡처: [링크](evidences/vscode-repo-linked.png)
 - 첫 푸시 명령과 출력:
 
 ```text
@@ -249,7 +249,6 @@ e94f768 (HEAD -> main, origin/main, origin/HEAD) Update command-log.md
 8fa79df Add README.md and command-log.md, remove legacy checklists
 6d2e7ec Update README.md
 ```
-[VSCode 저장소 연동 증거](evidences/vscode-repo-linked.png)
 
 ---
 
