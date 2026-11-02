@@ -1,6 +1,6 @@
 # 명령어 로그
 
-이 문서는 README.md에서 링크로 연결합니다. 각 항목은 명령 입력과 출력 결과를 함께 기록합니다. 캡처 파일은 `images/` 폴더에 두고 해당 항목에서 링크합니다.
+이 문서는 README.md에서 링크로 연결합니다. 각 항목은 명령 입력과 출력 결과를 함께 기록합니다. 캡처 파일은 `evidences/` 폴더에 두고 해당 항목에서 링크합니다.
 
 - 형식: 명령 입력은 `$` 뒤에 적고, 출력은 그 아래에 그대로 붙여 넣습니다.
 - 민감정보: 사용자 이름, 이메일, 토큰, 비밀번호, 인증 코드는 마스킹합니다.
@@ -159,7 +159,7 @@ $ (docker run 명령)
 (출력 결과)
 ```
 
-- 캡처: (링크: images/port-8080.png)
+- 캡처: (링크: evidences/port-8080.png)
 
 ### 7-2. 2회차 (호스트 포트 8081)
 
@@ -168,7 +168,7 @@ $ (docker run 명령)
 (출력 결과)
 ```
 
-- 캡처: (링크: images/port-8081.png)
+- 캡처: (링크: evidences/port-8081.png)
 
 ---
 
@@ -181,8 +181,8 @@ $ (docker run -v 명령)
 (수정 후 내용)
 ```
 
-- 캡처 전: (링크: images/mount-before.png)
-- 캡처 후: (링크: images/mount-after.png)
+- 캡처 전: (링크: evidences/mount-before.png)
+- 캡처 후: (링크: evidences/mount-after.png)
 
 ---
 
@@ -225,8 +225,8 @@ init.defaultbranch=main
 
 ## 11. GitHub 및 VSCode 연동 증거
 
-- GitHub 로그인 완료 캡처 (계정 정보 가림): (링크: images/github-login.png)
-- 저장소 연동 완료 캡처: (링크: images/vscode-github-link.png)
+- GitHub 로그인 완료 캡처 (계정 정보 가림): (링크: evidences/github-login.png)
+- 저장소 연동 완료 캡처: (링크: evidences/vscode-github-link.png)
 - 첫 푸시 명령과 출력:
 
 ```text
@@ -241,7 +241,15 @@ Writing objects: 100% (4/4), 6.14 KiB | 6.14 MiB/s, done.
 Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 To https://github.com/InGentleWave/Codyssey_E1_1_Dev_Set-up_practice.git
    6d2e7ec..8fa79df  main -> main
+
+user@host:~/...$ git status -sb
+## main...origin/main
+user@host:~/...$ git log --oneline -3 origin/main
+e94f768 (HEAD -> main, origin/main, origin/HEAD) Update command-log.md
+8fa79df Add README.md and command-log.md, remove legacy checklists
+6d2e7ec Update README.md
 ```
+[VSCode 저장소 연동 증거](evidences/vscode-repo-linked.png)
 
 ---
 
