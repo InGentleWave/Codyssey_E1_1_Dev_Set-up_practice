@@ -230,8 +230,17 @@ init.defaultbranch=main
 - 첫 푸시 명령과 출력:
 
 ```text
-$ (git push 명령)
-(출력 결과)
+user@host:~/...$ git push origin main
+Username for 'https://github.com': InGentleWave
+Password for 'https://InGentleWave@github.com':
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 6.14 KiB | 6.14 MiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/InGentleWave/Codyssey_E1_1_Dev_Set-up_practice.git
+   6d2e7ec..8fa79df  main -> main
 ```
 
 ---
