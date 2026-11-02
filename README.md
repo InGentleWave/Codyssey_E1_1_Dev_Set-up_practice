@@ -39,12 +39,12 @@
 
 | 항목 | 값 |
 |---|---|
-| Windows 버전 | (기록) |
-| WSL 버전 | (기록) |
-| 배포판 및 버전 | (기록) |
+| Windows 버전 | 25H2(OS 빌드 26200.9818) |
+| WSL 버전 | 3.0.3.0 |
+| 배포판 및 버전 | Ubuntu 26.04.1 LTS |
 | OS | Windows 11 + WSL2 Ubuntu |
-| 쉘 | (기록) |
-| 터미널 | (기록) |
+| 쉘 | bash(Ubuntu 26.04) |
+| 터미널 | 1.144.0 Terminal (WSL)|
 | Docker 버전 | (기록) |
 | Docker 실행 방식 | (Docker Desktop WSL 통합 또는 WSL 내부 엔진 중 선택 및 사유) |
 | Git 버전 | 2.53.0 |
