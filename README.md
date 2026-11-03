@@ -38,12 +38,12 @@
 
 | 항목 | 값 |
 |---|---|
-| OS | Windows 11 + WSL2 Ubuntu |
-| 쉘 | bash(Ubuntu 26.04) |
-| 터미널 | 1.144.0 Terminal (WSL)|
-| Docker 버전 | (기록) |
-| Git 버전 | 2.53.0 |
-| VSCode 버전 | 1.144.0 |
+| OS | Windows 11(버전 25H2 OS 빌드 26200.9818) + WSL2 Ubuntu |
+| 쉘 | 5.1.26100.9818 |
+| 터미널 | VSCode 1.144.1 Terminal (powershell)|
+| Docker 버전 | Docker version 29.9.2, build a82e528 |
+| Git 버전 | git version 2.56.0.windows.4 |
+| VSCode 버전 | 1.144.1 |
 
 ## 3. 수행 항목 체크리스트
 
