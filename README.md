@@ -69,14 +69,14 @@
 - [ ] 파일 내용 확인 (cat 또는 less)
 - [ ] 빈 파일 생성 (touch)
 
-  [결과](./evidences/command-log.md#4-터미널-조작)
+[결과](./evidences/command-log.md#4-터미널-조작)
 
 ## 5. 권한 실습
 
 - [ ] 파일 1개 권한 확인 (ls -l), 변경 (chmod), 변경 전후 비교
 - [ ] 디렉터리 1개 권한 확인 (ls -ld), 변경 (chmod), 변경 전후 비교
 
-  [결과](./evidences/command-log.md#5-권한-실습)
+[결과](./evidences/command-log.md#5-권한-실습)
 
 ## 6. Docker
 
@@ -85,7 +85,7 @@
 - [ ] docker --version 출력 기록
 - [ ] docker info 출력 기록 (데몬 동작 확인)
 
-  [결과](./evidences/command-log.md#6-1-설치-및-점검)
+[결과](./evidences/command-log.md#6-1-설치-및-점검)
 
 ### 6-2. Docker 기본 운영 명령
 
@@ -94,7 +94,7 @@
 - [ ] 운영: 로그 확인(예: docker logs), 리소스 확인(예: docker stats)
 - [ ] 컨테이너 실행, 중지, 재시작, 삭제 각 단계의 상태 변화 기록
 
-  [결과](./evidences/command-log.md#6-2-docker-기본-운영-명령)
+[결과](./evidences/command-log.md#6-2-docker-기본-운영-명령)
 
 ### 6-3. 컨테이너 실행 실습
 
@@ -103,7 +103,7 @@
 - [ ] ubuntu 컨테이너 대화형 실행, 내부에서 ls와 echo 수행 결과 기록
 - [ ] attach와 exec의 차이 정리
 
-  [결과](./evidences/command-log.md#6-3-컨테이너-실행-실습)
+[결과](./evidences/command-log.md#6-3-컨테이너-실행-실습)
 
 ## 7. Dockerfile 기반 웹 서버 컨테이너
 
@@ -119,7 +119,7 @@
   - [ ] docker run으로 컨테이너 실행 및 상태 확인
 - [ ] 포트 매핑 접속 성공 증거(브라우저 스크린샷)
 
-  [결과](./evidences/command-log.md#7-dockerfile-기반-웹-서버-컨테이너)
+[결과](./evidences/command-log.md#7-dockerfile-기반-웹-서버-컨테이너)
 
 ## 8. 포트 매핑 접속 증거
 
@@ -127,7 +127,7 @@
   - [ ] 1회차 포트 매핑 실행 명령 기록, 브라우저 접속 캡처 (주소창에 포트 포함)
   - [ ] 2회차 다른 호스트 포트로 실행 (컨테이너 이름은 다르게), 브라우저 접속 캡처
 
-  [결과](./evidences/command-log.md#8-포트-매핑-접속-증거)
+[결과](./evidences/command-log.md#8-포트-매핑-접속-증거)
 
 ## 9. 바인드 마운트 반영 + 볼륨 영속성 증거
 
@@ -137,7 +137,7 @@
 - [ ] 호스트 파일 변경 전/후 내용 비교
 - [ ] 변경이 컨테이너에 반영되었음을 확인
 
-  [결과](./evidences/command-log.md#9-1-바인드-마운트-반영)
+[결과](./evidences/command-log.md#9-1-바인드-마운트-반영)
 
 ### 9-2. Docker 볼륨 영속성 검증
 
@@ -158,7 +158,7 @@
   - [ ] 볼륨을 연결하지 않은 대조용 컨테이너에서 같은 경로를 확인하여 데이터가 없음을 기록
 - [ ] 검증 종료 후 테스트 볼륨 정리 명령과 출력 기록
 
-  [결과](./evidences/command-log.md#9-2-docker-볼륨-영속성-검증)
+[결과](./evidences/command-log.md#9-2-docker-볼륨-영속성-검증)
 
 ## 10. Git 설정 및 GitHub 연동
 
@@ -167,7 +167,7 @@
 - [ ] git bash 로컬 저장소와 원격 저장소 연결 기록
 - [ ] 연동 완료 캡처 (토큰, 인증 코드 포함 주의)
 
-  [결과](./evidences/command-log.md#10-git-설정-및-github-연동)
+[결과](./evidences/command-log.md#10-git-설정-및-github-연동)
 
 ## 11. 보안 및 개인정보
 
@@ -175,7 +175,7 @@
 - [ ] 발견된 항목 마스킹 또는 제거
 - [ ] 노출된 적이 있다면 제거 및 재발급 내역을 기록
 
-  [결과](./evidences/command-log.md#11-보안-및-개인정보)
+[결과](./evidences/command-log.md#11-보안-및-개인정보)
 
 ## 12. 트러블슈팅 기록
 
@@ -215,8 +215,8 @@
   - [ ] Windows에서 SSH 키를 생성하고 공개 키를 GitHub에 등록
   - [ ] 원격 주소를 SSH로 바꾸고 푸시 성공 결과 기록
   - [ ] HTTPS와 SSH 키 인증의 차이 정리
-  
-  [결과](./evidences/command-log.md#13-보너스-과제-선택)
+
+[결과](./evidences/command-log.md#13-보너스-과제-선택)
 
 ## 14. 최종 점검
 
