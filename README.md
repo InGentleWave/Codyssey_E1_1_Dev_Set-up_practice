@@ -42,7 +42,7 @@
 | 쉘 | bash(Ubuntu 26.04) |
 | 터미널 | 1.144.0 Terminal (WSL)|
 | Docker 버전 | (기록) |
-| Git 버전 | 2.56.0.windows.4 |
+| Git 버전 | 2.53.0 |
 | VSCode 버전 | 1.144.0 |
 
 ## 3. 수행 항목 체크리스트
