@@ -5,11 +5,11 @@
 ### 현재 위치 확인 (pwd)
 
 ```powershell
-PS C:\Users\*****\Downloads\Downloads_1_Project\Codyssey\E1_1> pwd
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> pwd
 
 Path                                                      
 ----                                                      
-C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1
+C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1
 ```
 
 ### 숨김 파일 포함 목록 확인 (ls -la)
