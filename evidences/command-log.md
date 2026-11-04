@@ -550,7 +550,7 @@ f51cf60939c8   ubuntu    "/bin/bash"               20 hours ago    Exited (255) 
 #### 호스트 디렉터리를 컨테이너에 연결하는 실행 명령 기록
 
 ```
-PS C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1> docker run -d --name bind-mount-p 8082:80 --mount type=bind,source="C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1\src\index.html",target=/usr/share/nginx/html/index.html,readonly nginx
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d --name bind-mount-p 8082:80 --mount type=bind,source="C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1\src\index.html",target=/usr/share/nginx/html/index.html,readonly nginx
 Unable to find image 'nginx:latest' locally
 latest: Pulling from library/nginx
 Digest: sha256:5ab5b0b01097420873a3f3330f44248e34a3c2a3e8d5ee30658aeae8cb7435da
@@ -566,33 +566,75 @@ Status: Downloaded newer image for nginx:latest
 호스트 파일 변경 후
 ![호스트 파일 변경 후](./docker-bind-mount-after-host-change.png)
 
-#### 변경이 컨테이너에 반영되었음을 확인
-
 ### 9-2. Docker 볼륨 영속성 검증
 
 #### 삭제 전 데이터 준비
 
-##### 볼륨 생성 명령과 출력 기록, 볼륨 목록 확인
-##### 볼륨을 컨테이너 연결 명령 및 출력 기록
-##### 볼륨을 연결한 컨테이너 실행, 내부에서 데이터 생성 기록
-##### 컨테이너 상세 정보에서 볼륨 마운트 항목(볼륨 이름, 컨테이너 내부 경로)이 표시되는 출력 기록
-##### 삭제 대상 컨테이너의 ID와 이름 기록
+##### 볼륨 생성/연결/검증 로그
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker volume ls
+DRIVER    VOLUME NAME
+# 생성
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker volume create mydata 
+mydata
+# 연결
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d --name test1 -v mydata:/data nginx 
+1f1cf8ee9c066dff404401d0dc922af6bacaddbfeaf2ff8c685c495037893678
+# 볼륨 내 데이터 생성
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker exec test1 sh -c "echo 영속성 테스트 > /data/test.txt"
+```
+
 ##### 컨테이너 삭제 전 데이터 확인 기록 (데이터 값 또는 파일 내용 원문 포함)
+
+```powershell
+# 볼륨 내 데이터 확인
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker exec test1 cat /data/test.txt
+영속성 테스트
+```
 
 #### 컨테이너 삭제 명령과 출력 기록
 
-#### 삭제 후 데이터 준비
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker rm -f test1
+test1
+```
 
-##### 컨테이너 삭제 직후 볼륨 목록에 해당 볼륨이 남아 있는지 확인 기록
-##### 컨테이너 삭제 후 같은 볼륨을 연결한 새 컨테이너 실행
+#### 컨테이너 삭제 직후 볼륨 목록에 해당 볼륨이 남아 있는지 확인 기록
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker volume ls
+DRIVER    VOLUME NAME
+local     mydata
+```
+
+#### 삭제한 컨테이너와 같은 볼륨을 연결한 새 컨테이너 실행
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d --name test2 -v mydata:/data nginx
+93e96c8ba0dd0a2bd75726bbdf7a741924e3a5f3c57b31e16c3bf37154ab8bcf
+```
 
 #### 삭제 전/후 데이터 유지 검증
 
-##### 새 컨테이너의 ID가 삭제된 컨테이너의 ID와 다름을 기록
 ##### 새 컨테이너에서 삭제 전과 동일한 데이터 확인 기록 (삭제 전 기록과 대조)
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker exec test2 cat /data/test.txt
+영속성 테스트
+```
+
 ##### 볼륨을 연결하지 않은 대조용 컨테이너에서 같은 경로를 확인하여 데이터가 없음을 기록
 
-#### 검증 종료 후 테스트 볼륨 정리 명령과 출력 기록
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d --name test3 nginx
+b6051d28443c31acb02af77dc1909f28c6de46602d339f388c95349288a48893
+
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker exec test3 cat /data/test.txt
+cat: /data/test.txt: No such file or directory
+```
 
 ## 10. Git 설정 및 GitHub 연동
 
