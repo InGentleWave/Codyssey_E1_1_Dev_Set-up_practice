@@ -50,8 +50,8 @@
 - [x] [터미널 조작](#4-터미널-조작)
 - [x] [권한 실습](#5-권한-실습)
 - [x] [Docker](#6-docker)
-- [ ] [Dockerfile 기반 웹 서버 컨테이너](#7-dockerfile-기반-웹-서버-컨테이너)
-- [ ] [포트 매핑 접속 증거](#8-포트-매핑-접속-증거)
+- [x] [Dockerfile 기반 웹 서버 컨테이너](#7-dockerfile-기반-웹-서버-컨테이너)
+- [x] [포트 매핑 접속 증거](#8-포트-매핑-접속-증거)
 - [ ] [바인드 마운트 반영 + 볼륨 영속성 증거](#9-바인드-마운트-반영--볼륨-영속성-증거)
 - [ ] [Git 설정 및 GitHub 연동](#10-git-설정-및-github-연동)
 - [ ] [보안 및 개인정보](#11-보안-및-개인정보)
@@ -97,23 +97,19 @@
 
 ## 7. Dockerfile 기반 웹 서버 컨테이너
 
-- [ ] 웹 서버 소스코드 (src/) [증거](./evidences/command-log.md#웹-서버-소스코드-src)
-- [ ] Dockerfile(직접 작성, 전체 코드를 8번 섹션에 포함) [증거](./evidences/command-log.md#dockerfile직접-작성-전체-코드를-8번-섹션에-포함)
-- [ ] 방식 선택: (A) nginx 베이스 이미지 활용 [증거](./evidences/command-log.md#방식-선택-a-nginx-베이스-이미지-활용)
-- [ ] 베이스 선택 이유 기록 [증거](./evidences/command-log.md#베이스-선택-이유-기록)
-- [ ] 커스텀 포인트별 목적 기록 [증거](./evidences/command-log.md#커스텀-포인트별-목적-기록)
-- [ ] 커스텀 이미지 빌드 성공 증거 [증거](./evidences/command-log.md#커스텀-이미지-빌드-성공-증거)
-  - [ ] docker build 실행 명령 및 결과 로그 [증거](./evidences/command-log.md#docker-build-실행-명령-및-결과-로그)
-  - [ ] 빌드된 이미지 목록 확인 [증거](./evidences/command-log.md#빌드된-이미지-목록-확인)
-- [ ] 컨테이너 실행 성공 증거 [증거](./evidences/command-log.md#컨테이너-실행-성공-증거)
-  - [ ] docker run으로 컨테이너 실행 및 상태 확인 [증거](./evidences/command-log.md#docker-run으로-컨테이너-실행-및-상태-확인)
-- [ ] 포트 매핑 접속 성공 증거(브라우저 스크린샷) [증거](./evidences/command-log.md#포트-매핑-접속-성공-증거브라우저-스크린샷)
+- [x] 웹 서버 소스코드 (src/) [증거](./src/index.html)
+- [x] Dockerfile [증거](./Dockerfile)
+- [x] 방식 선택: (A) nginx 베이스 이미지 활용
+- [x] nginx 베이스 선택 이유 : 이미 웹 서버가 설치되고 기본 설정(정적 파일 제공, CMD 포함)이 적용되어 있어 작업 시작이 수월함.
+- [x] 커스텀 포인트별 목적 : nginx 태그(stable-alpine) - 안정성과 경량성에 적합함
+- [x] docker build 실행 명령 및 결과 로그 [로그](./evidences/command-log.md#docker-build-실행-명령-및-결과-로그)
+- [x] 포트 매핑 접속 성공 증거(브라우저 스크린샷) [스크린샷](./evidences/docker-run-localhost-8080.png)
 
 ## 8. 포트 매핑 접속 증거
 
-- [ ] p <host_port>:<container_port>로 실행 후, 브라우저 접속 화면(주소창 포함) [증거](./evidences/command-log.md#p-host_portcontainer_port로-실행-후-브라우저-접속-화면주소창-포함)
-  - [ ] 1회차 포트 매핑 실행 명령 기록, 브라우저 접속 캡처 (주소창에 포트 포함) [증거](./evidences/command-log.md#1회차-포트-매핑-실행-명령-기록-브라우저-접속-캡처-주소창에-포트-포함)
-  - [ ] 2회차 다른 호스트 포트로 실행 (컨테이너 이름은 다르게), 브라우저 접속 캡처 [증거](./evidences/command-log.md#2회차-다른-호스트-포트로-실행-컨테이너-이름은-다르게-브라우저-접속-캡처)
+- [x] p <host_port>:<container_port>로 실행 후, 브라우저 접속 화면(주소창 포함)
+  - [x] 1회차 포트 매핑 실행 명령 기록, 브라우저 접속 캡처 (주소창에 포트 포함) [캡처(localhost:8080)](./evidences/docker-run-localhost-8080.png)
+  - [x] 2회차 다른 호스트 포트로 실행 (컨테이너 이름은 다르게), 브라우저 접속 캡처 [캡처(localhost:8081)](./evidences/docker-run-localhost-8081.png)
 
 ## 9. 바인드 마운트 반영 + 볼륨 영속성 증거
 
@@ -159,10 +155,10 @@
 
 ### 12-1. 문제 1
 
-- 문제: (현상과 오류 메시지 전문)
-- 원인 가설: (가능성이 있는 원인 목록)
-- 확인: (확인에 사용한 명령과 출력 결과)
-- 해결 또는 대안: (최종 조치 또는 우회 방법)
+- 문제: Docker 커스텀 이미지 빌드 실패
+- 원인 가설: 빌드 컨텍스트에 존재하지 않는 파일을 COPY 시도함 [로그](./evidences/command-log.md#12-1-1-문제-및-원인-가설)
+- 확인: [로그](./evidences/command-log.md#12-1-3-확인)
+- 해결 또는 대안: 빌드 컨텍스트를 상위 경로인 프로젝트 폴더로 설정하여 이미지 빌드 실행함 [증거](./evidences/command-log.md#12-1-4-해결)
 
 ### 12-2. 문제 2
 

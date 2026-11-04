@@ -416,9 +416,9 @@ root@cdcdc0e4bd3c:/# echo $SHELL
 /bin/bash
 ```
 #### attach와 exec의 차이 정리
-
+docker attach 컨테이너ID : 
+컨테이너의 메인 프로세스에 표준 입출력을 연결함. exit 입력 시 메인 프로세스 즉 컨테이너가 종료됨
 ```console
-# docker attach 컨테이너ID : 컨테이너의 메인 프로세스에 표준 입출력을 연결함. exit 입력 시 메인 프로세스 즉 컨테이너가 종료됨
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker start mybox
 mybox
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a
@@ -430,8 +430,12 @@ exit
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a
 CONTAINER ID   IMAGE     COMMAND       CREATED              STATUS                     PORTS     NAMES
 f51cf60939c8   ubuntu    "/bin/bash"   About a minute ago   Exited (0) 4 seconds ago             mybox
+```
 
-# docker exec 컨테이너ID 명령어: 컨테이너에 메인 프로세스와 무관한 새 프로세스를 실행하여 명령어에 대한 출력값을 받고 프로세스를 종료함. -it(대화형) 옵션을 사용하여 bash등과 같은 대화형 쉘을 사용할 수 있음. 이 때 exit를 입력하면 쉘이 종료되고 메인 프로세스는 계속 실행이 유지됨.
+docker exec 컨테이너ID 명령어: 
+컨테이너에 메인 프로세스와 무관한 새 프로세스를 실행하여 명령어에 대한 출력값을 받고 프로세스를 종료함. -it(대화형) 옵션을 사용하여 bash등과 같은 대화형 쉘을 사용할 수 있음. 이 때 exit를 입력하면 쉘이 종료되고 메인 프로세스는 계속 실행이 유지됨.
+
+```console
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a
 CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES
 f51cf60939c8   ubuntu    "/bin/bash"   5 minutes ago   Up 4 minutes             mybox
@@ -479,19 +483,65 @@ f51cf60939c8   ubuntu    "/bin/bash"   15 minutes ago   Up 13 minutes
 
 ## 7. Dockerfile 기반 웹 서버 컨테이너
 
-### 웹 서버 소스코드 (src/)
-### Dockerfile(직접 작성, 전체 코드를 8번 섹션에 포함)
-### 방식 선택: (A) nginx 베이스 이미지 활용
-### 베이스 선택 이유 기록
-### 커스텀 포인트별 목적 기록
-### 커스텀 이미지 빌드 성공 증거
+### docker build 실행 명령 및 결과 로그
+빌드 및 확인
 
-#### docker build 실행 명령 및 결과 로그
-#### 빌드된 이미지 목록 확인
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker build -t exam .
+[+] Building 7.8s (7/7) FINISHED                                          docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                      0.0s
+ => => transferring dockerfile: 223B                                                      0.0s
+ => [internal] load metadata for docker.io/library/nginx:stable-alpine                    3.0s
+ => [internal] load .dockerignore                                                         0.0s
+ => => transferring context: 2B                                                           0.0s
+ => [internal] load build context                                                         0.0s
+ => => transferring context: 59B                                                          0.0s
+ => [1/2] FROM docker.io/library/nginx:stable-alpine@sha256:0e52bd054126cdc040b1276c0af3  3.0s
+ => => resolve docker.io/library/nginx:stable-alpine@sha256:0e52bd054126cdc040b1276c0af3  0.0s
+ => => sha256:5b8cb54cfa408030aaa43d7bffa9141e0ae6f8a479df13c7aa152100 20.31MB / 20.31MB  2.1s
+ => => sha256:bb658a2541968d2b90a8ee165ad08b7f71055c7f7832bdff98e2de2d8b 1.40kB / 1.40kB  0.5s
+ => => sha256:81b64ae234ef95f3cfc19b7f6c45a511eccbefa6148889ee33ed43c6c3 1.21kB / 1.21kB  0.6s
+ => => sha256:e125989d16f03d1e00b60afdd9abe46ed1437ed63b73926d036a5537f6be77 403B / 403B  0.7s
+ => => sha256:885725a63a7cf1d4d5aac105944b35ece2b69a8c2cc6f7040f04727b7b8a63 964B / 964B  0.2s
+ => => sha256:f19a2d3b695178ba0e57d473535f74f5d934f45e191de8334e730f83d2c627 627B / 627B  0.2s
+ => => sha256:9f0afb44f10e826253b342c0265e188067c2f0a30c782a52e329928a76 1.88MB / 1.88MB  1.0s
+ => => extracting sha256:9f0afb44f10e826253b342c0265e188067c2f0a30c782a52e329928a763adc6  0.2s
+ => => extracting sha256:f19a2d3b695178ba0e57d473535f74f5d934f45e191de8334e730f83d2c6270  0.0s
+ => => extracting sha256:885725a63a7cf1d4d5aac105944b35ece2b69a8c2cc6f7040f04727b7b8a63d  0.1s
+ => => extracting sha256:e125989d16f03d1e00b60afdd9abe46ed1437ed63b73926d036a5537f6be770  0.0s
+ => => extracting sha256:81b64ae234ef95f3cfc19b7f6c45a511eccbefa6148889ee33ed43c6c3f3993  0.0s
+ => => extracting sha256:bb658a2541968d2b90a8ee165ad08b7f71055c7f7832bdff98e2de2d8b90cf1  0.0s
+ => => extracting sha256:5b8cb54cfa408030aaa43d7bffa9141e0ae6f8a479df13c7aa152100cca358f  0.4s
+ => [2/2] COPY src/index.html /usr/share/nginx/html/index.html                            0.2s
+ => exporting to image                                                                    1.3s
+ => => exporting layers                                                                   0.2s
+ => => exporting manifest sha256:b213b9f8d2d446bb27b332c3e4861eb4da341d1d9a47f3118e06038  0.0s
+ => => exporting config sha256:fb1ddaa55058bc1b22f6ae61114226f7fa77a1985d7faeaa2310c6dfa  0.0s
+ => => exporting attestation manifest sha256:592e031c43577f67d5a4726911818810341c58b5517  0.0s
+ => => exporting manifest list sha256:792e890320716d914ecc78a650a132aa4328defe969ee785f1  0.0s
+ => => naming to docker.io/library/exam:latest                                            0.0s
+ => => unpacking to docker.io/library/exam:latest
 
-### 컨테이너 실행 성공 증거
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker images
+                                                                          i Info →   U  In Use
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+exam:latest          792e89032071       92.7MB         26.1MB        
+hello-world:latest   c567b231f656       25.9kB         9.49kB        
+my-web:latest        de28cc6696af        241MB         63.9MB        
+ubuntu:latest        6a06111c3b0a        163MB         45.9MB
+```
 
-#### docker run으로 컨테이너 실행 및 상태 확인
+실행 및 결과
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d -p 8080:80 --name exam1 exam
+23d21ba10c8b57f64a62bf1a890330687cf47009b60b3a01130a1d973b007e29
+
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a
+CONTAINER ID   IMAGE     COMMAND                   CREATED         STATUS                     PORTS                                     NAMES
+23d21ba10c8b   exam      "/docker-entrypoint.…"   4 minutes ago   Up 4 minutes               0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   exam1
+f51cf60939c8   ubuntu    "/bin/bash"               20 hours ago    Exited (255) 2 hours ago                                         mybox
+```
 
 ### 포트 매핑 접속 성공 증거(브라우저 스크린샷)
 
@@ -552,6 +602,118 @@ f51cf60939c8   ubuntu    "/bin/bash"   15 minutes ago   Up 13 minutes
 ### README.md, command-log.md, 캡처에서 토큰, 비밀번호, 개인키, 인증 코드, 개인 이메일 검색
 ### 발견된 항목 마스킹 또는 제거
 ### 노출된 적이 있다면 제거 및 재발급 내역을 15번 섹션에 기록
+
+## 12. 트러블 슈팅
+
+### 12-1. 문제1
+
+#### 12-1-1. 문제 및 원인 가설
+
+```powershell
+# Docker 커스텀 이미지 빌드 시도
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> docker build -f ./Dockerfile -t exam .
+[+] Building 2.8s (6/6) FINISHED                            docker:desktop-linux
+ => [internal] load build definition from Dockerfile                        0.0s
+ => => transferring dockerfile: 108B                                        0.0s
+ => [internal] load metadata for docker.io/library/nginx:alpine             2.5s
+ => [internal] load .dockerignore                                           0.1s
+ => => transferring context: 2B                                             0.0s
+ => [internal] load build context                                           0.1s
+ => => transferring context: 2B                                             0.0s
+ => [1/2] FROM docker.io/library/nginx:alpine@sha256:785835ea65db4bba6f021  0.1s
+ => => resolve docker.io/library/nginx:alpine@sha256:785835ea65db4bba6f021  0.1s
+ => ERROR [2/2] COPY src/index.html /usr/share/nginx/html/index.html        0.0s
+------
+ > [2/2] COPY src/index.html /usr/share/nginx/html/index.html:
+------
+Dockerfile:2
+--------------------
+   1 |     FROM nginx:alpine
+   2 | >>> COPY src/index.html /usr/share/nginx/html/index.html
+--------------------
+# 실패 원인 : not found
+ERROR: failed to build: failed to solve: failed to compute cache key: failed to calculate checksum of ref t8rlv3xuwy8z383fhde6y0ebk::hwpet34bujgaz43b9i89s8fdd: "/src/index.html": not found
+```
+
+#### 12-1-3. 확인
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> ls
+
+
+    디렉터리: C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1\evidenc
+    es
+
+
+Mode                 LastWriteTime         Length Name                          
+----                 -------------         ------ ----                          
+d-----      2026-11-03   오후 7:17                local-only                    
+-a----      2026-11-04   오후 5:36          24409 command-log.md                
+-a----      2026-11-04   오후 4:58             71 Dockerfile                    
+-a----      2026-11-02   오후 8:53          72565 vscode-github-login.png       
+-a----      2026-11-02   오후 8:59          74789 vscode-repo-linked.png        
+
+
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> ls ../
+
+
+    디렉터리: C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1
+
+
+Mode                 LastWriteTime         Length Name                          
+----                 -------------         ------ ----                          
+d-----      2026-11-04   오후 4:58                evidences                     
+d-----      2026-11-02   오후 7:30                generated                     
+d-----      2026-11-03   오후 1:48                guide                         
+d-----      2026-11-04   오후 4:33                nginx                         
+d-----      2026-11-04   오후 4:58                src                           
+-a----      2026-11-04   오후 5:33          17568 README.md                     
+
+
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> ls ../src
+
+
+    디렉터리: C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1\src
+
+
+Mode                 LastWriteTime         Length Name                          
+----                 -------------         ------ ----                          
+-a----      2026-11-04   오후 4:24            302 index.html                    
+```
+
+#### 12-1-4. 해결
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> docker build -f ./Dockerfile -t exam ../
+[+] Building 2.7s (7/7) FINISHED                            docker:desktop-linux
+ => [internal] load build definition from Dockerfile                        0.1s
+ => => transferring dockerfile: 108B                                        0.0s
+ => [internal] load metadata for docker.io/library/nginx:alpine             1.0s
+ => [internal] load .dockerignore                                           0.1s
+ => => transferring context: 2B                                             0.0s
+ => [internal] load build context                                           0.1s
+ => => transferring context: 372B                                           0.0s
+ => [1/2] FROM docker.io/library/nginx:alpine@sha256:785835ea65db4bba6f021  0.1s
+ => => resolve docker.io/library/nginx:alpine@sha256:785835ea65db4bba6f021  0.0s
+ => CACHED [2/2] COPY src/index.html /usr/share/nginx/html/index.html       0.0s
+ => exporting to image                                                      1.2s
+ => => exporting layers                                                     0.0s
+ => => exporting manifest sha256:ada5cdd415b90c8429adb206c8a9d346ea0317102  0.0s
+ => => exporting config sha256:49f0f4dc0b23a7d586681464e795d180a3818b7b26d  0.0s
+ => => exporting attestation manifest sha256:c503844f07c4599dfa1c2919982fb  0.0s
+ => => exporting manifest list sha256:3c5a22df25011ba104ebd497fc7560753989  0.0s
+ => => naming to docker.io/library/exam:latest                              0.0s
+ => => unpacking to docker.io/library/exam:latest                           1.0s
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> docker images
+                                                            i Info →   U  In Use
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+exam:latest          3c5a22df2501       93.6MB         26.3MB        
+hello-world:latest   c567b231f656       25.9kB         9.49kB        
+my-web:latest        de28cc6696af        241MB         63.9MB        
+ubuntu:latest        6a06111c3b0a        163MB         45.9MB    U   
+```
+
+### 12-2. 문제2
 
 ## 13. 보너스 과제 (선택)
 
