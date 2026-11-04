@@ -131,10 +131,9 @@
 
 ## 10. Git 설정 및 GitHub 연동
 
-- [ ] 사용자 이름, 사용자 이메일(마스킹), 기본 브랜치 설정 후 git config --list 출력 기록 (민감값 마스킹) [증거](./evidences/command-log.md#사용자-이름-사용자-이메일마스킹-기본-브랜치-설정-후-git-config---list-출력-기록-민감값-마스킹)
-- [ ] VSCode에서 GitHub 로그인 연동 완료 캡처 (계정 정보 가림) [증거](./evidences/command-log.md#vscode에서-github-로그인-연동-완료-캡처-계정-정보-가림)
-- [ ] git bash 로컬 저장소와 원격 저장소 연결 기록 [증거](./evidences/command-log.md#git-bash-로컬-저장소와-원격-저장소-연결-기록)
-- [ ] 연동 완료 캡처 (토큰, 인증 코드 포함 주의) [증거](./evidences/command-log.md#연동-완료-캡처-토큰-인증-코드-포함-주의)
+- [x] 사용자 이름, 사용자 이메일(마스킹), 기본 브랜치 설정 후 git config --list 출력 기록 (민감값 마스킹) [증거](./evidences/command-log.md#12-2-문제2)
+- [x] VSCode에서 GitHub 로그인 연동 완료 캡처 (계정 정보 가림) [증거](./evidences/vscode-github-login.png)
+- [x] 연동 완료 캡처 (토큰, 인증 코드 포함 주의) [증거](./evidences/vscode-repo-linked.png)
 
 ## 11. 보안 및 개인정보
 
@@ -153,10 +152,10 @@
 
 ### 12-2. 문제 2
 
-- 문제:
-- 원인 가설:
-- 확인:
-- 해결 또는 대안:
+- 문제: git config 설정 중 not in a git directory 오류
+- 원인 가설: 현재 경로가 git directory가 아님
+- 확인: [로그](./evidences/command-log.md#12-2-3-확인)
+- 해결: 경로 이동 및 진행 [로그](./evidences/command-log.md#12-2-4-해결)
 
 ## 13. 보너스 과제
 

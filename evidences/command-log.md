@@ -550,7 +550,7 @@ f51cf60939c8   ubuntu    "/bin/bash"               20 hours ago    Exited (255) 
 #### 호스트 디렉터리를 컨테이너에 연결하는 실행 명령 기록
 
 ```
-PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d --name bind-mount-p 8082:80 --mount type=bind,source="C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1\src\index.html",target=/usr/share/nginx/html/index.html,readonly nginx
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d --name bind-mount-p 8082:80 --mount type=bind,source="C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\src\index.html",target=/usr/share/nginx/html/index.html,readonly nginx
 Unable to find image 'nginx:latest' locally
 latest: Pulling from library/nginx
 Digest: sha256:5ab5b0b01097420873a3f3330f44248e34a3c2a3e8d5ee30658aeae8cb7435da
@@ -636,13 +636,6 @@ PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker exec test3 cat /data/test.txt
 cat: /data/test.txt: No such file or directory
 ```
 
-## 10. Git 설정 및 GitHub 연동
-
-### 사용자 이름, 사용자 이메일(마스킹), 기본 브랜치 설정 후 git config --list 출력 기록 (민감값 마스킹)
-### VSCode에서 GitHub 로그인 연동 완료 캡처 (계정 정보 가림)
-### git bash 로컬 저장소와 원격 저장소 연결 기록
-### 연동 완료 캡처 (토큰, 인증 코드 포함 주의)
-
 ## 11. 보안 및 개인정보
 
 - 이 문서, 로그, 스크린샷에는 토큰, 비밀번호, 개인키, 인증 코드, 개인 이메일 주소를 포함하지 않습니다.
@@ -691,7 +684,7 @@ ERROR: failed to build: failed to solve: failed to compute cache key: failed to 
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> ls
 
 
-    디렉터리: C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1\evidenc
+    디렉터리: C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidenc
     es
 
 
@@ -707,7 +700,7 @@ d-----      2026-11-03   오후 7:17                local-only
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> ls ../
 
 
-    디렉터리: C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1
+    디렉터리: C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1
 
 
 Mode                 LastWriteTime         Length Name                          
@@ -723,7 +716,7 @@ d-----      2026-11-04   오후 4:58                src
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> ls ../src
 
 
-    디렉터리: C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1\src
+    디렉터리: C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\src
 
 
 Mode                 LastWriteTime         Length Name                          
@@ -764,6 +757,58 @@ ubuntu:latest        6a06111c3b0a        163MB         45.9MB    U
 ```
 
 ### 12-2. 문제2
+
+#### 12-2-3. 확인
+
+```bash
+$ git config user.name songdajeon
+fatal: not in a git directory
+
+$ pwd
+/c/Users/<USER>
+```
+
+#### 12-2-4. 해결
+
+```bash
+$ cd ./<FOLDER>/<PROJECT>/E1_1
+
+<USER>@<HOST> UCRT64 ~/<FOLDER>/<PROJECT>/E1_1 (main)
+$ git config user.name songdajeon
+
+$ git config user.email 215927699+InGentleWave@users.noreply.github.com
+
+$ git config init.defaultBranch main
+
+# 초반 글로벌 설정 후 원격 연결 이후, 로컬 설정 새로 한 후의 리스트
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=schannel
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+user.name=songdajeon
+user.email=215927699+InGentleWave@users.noreply.github.com
+init.defaultbranch=main
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+remote.origin.url=https://github.com/InGentleWave/Codyssey_E1_1_Dev_Set-up_practice.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+```
 
 ## 13. 보너스 과제 (선택)
 
