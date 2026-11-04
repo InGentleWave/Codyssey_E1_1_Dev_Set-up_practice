@@ -543,21 +543,29 @@ CONTAINER ID   IMAGE     COMMAND                   CREATED         STATUS       
 f51cf60939c8   ubuntu    "/bin/bash"               20 hours ago    Exited (255) 2 hours ago                                         mybox
 ```
 
-### 포트 매핑 접속 성공 증거(브라우저 스크린샷)
-
-## 8. 포트 매핑 접속 증거
-
-### p <host_port>:<container_port>로 실행 후, 브라우저 접속 화면(주소창 포함)
-
-#### 1회차 포트 매핑 실행 명령 기록, 브라우저 접속 캡처 (주소창에 포트 포함)
-#### 2회차 다른 호스트 포트로 실행 (컨테이너 이름은 다르게), 브라우저 접속 캡처
-
 ## 9. 바인드 마운트 반영 + 볼륨 영속성 증거
 
 ### 9-1. 바인드 마운트 반영
 
 #### 호스트 디렉터리를 컨테이너에 연결하는 실행 명령 기록
+
+```
+PS C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1> docker run -d --name bind-mount-p 8082:80 --mount type=bind,source="C:\Users\seb84\Downloads\Downloads_1_Project\Codyssey\E1_1\src\index.html",target=/usr/share/nginx/html/index.html,readonly nginx
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+Digest: sha256:5ab5b0b01097420873a3f3330f44248e34a3c2a3e8d5ee30658aeae8cb7435da
+Status: Downloaded newer image for nginx:latest
+303efc9479f57785231cf6340644d9670df164de2b4614a841bf8849514bffe2
+```
+
 #### 호스트 파일 변경 전/후 내용 비교
+
+호스트 파일 변경 전
+![호스트 파일 변경 전](./docker-bind-mount-before-host-change.png)
+
+호스트 파일 변경 후
+![호스트 파일 변경 후](./docker-bind-mount-after-host-change.png)
+
 #### 변경이 컨테이너에 반영되었음을 확인
 
 ### 9-2. Docker 볼륨 영속성 검증
