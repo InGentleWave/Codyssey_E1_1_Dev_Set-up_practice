@@ -776,7 +776,7 @@ $ cd ./<FOLDER>/<PROJECT>/E1_1
 <USER>@<HOST> UCRT64 ~/<FOLDER>/<PROJECT>/E1_1 (main)
 $ git config user.name songdajeon
 
-$ git config user.email 215927699+InGentleWave@users.noreply.github.com
+$ git config user.email <EMAIL>
 
 $ git config init.defaultBranch main
 
@@ -796,7 +796,7 @@ credential.helper=manager
 credential.https://dev.azure.com.usehttppath=true
 init.defaultbranch=master
 user.name=songdajeon
-user.email=215927699+InGentleWave@users.noreply.github.com
+user.email=<EMAIL>
 init.defaultbranch=main
 core.repositoryformatversion=0
 core.filemode=false
@@ -841,7 +841,7 @@ branch.main.merge=refs/heads/main
 #### Windows에서 SSH 키를 생성
 
 ```powershell
-PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> ssh-keygen -t ed25519 -C "215927699+InGentleWave@users.noreply.github.com"
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> ssh-keygen -t ed25519 -C "<EMAIL>"
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (C:\Users\<USER>/.ssh/id_ed25519): 
 Enter passphrase (empty for no passphrase): 
@@ -849,7 +849,7 @@ Enter same passphrase again:
 Your identification has been saved in C:\Users\<USER>/.ssh/id_ed25519
 Your public key has been saved in C:\Users\<USER>/.ssh/id_ed25519.pub
 The key fingerprint is:
-SHA256:<SHA256> 215927699+InGentleWave@users.noreply.github.com
+SHA256:<SHA256> <EMAIL>
 The key's randomart image is:
 +--[ED25519 256]--+
 |<RANDOMART IMAGE>|
@@ -862,7 +862,45 @@ ssh-ed25519 <SSH-ED25519>
 #### 원격 주소를 SSH로 바꾸고 푸시 성공 결과 기록
 
 ```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> git remote -v
+origin  https://github.com/InGentleWave/Codyssey_E1_1_Dev_Set-up_practice.git (fetch)
+origin  https://github.com/InGentleWave/Codyssey_E1_1_Dev_Set-up_practice.git (push)
 
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> git remote set-url origin git@github.com:InGentleWave/Codyssey_E1_1_Dev_Set-up_practice.git
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> git remote -v
+origin  git@github.com:InGentleWave/Codyssey_E1_1_Dev_Set-up_practice.git (fetch)
+origin  git@github.com:InGentleWave/Codyssey_E1_1_Dev_Set-up_practice.git (push)
+
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> ssh -T git@github.com
+The authenticity of host 'github.com (20.200.245.247)' can't be established.
+ED25519 key fingerprint is SHA256:<SHA256>.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Hi InGentleWave! You've successfully authenticated, but GitHub does not provide shell access.
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   evidences/command-log.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> git add .\evidences\command-log.md
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> git commit -m "SSH Push Test"
+[main 72b0d60] SSH Push Test
+ 1 file changed, 5 insertions(+)
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> git push origin main
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 396 bytes | 396.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To github.com:InGentleWave/Codyssey_E1_1_Dev_Set-up_practice.git
+   8a96344..72b0d60  main -> main
 ```
 
-#### HTTPS와 SSH 키 인증의 차이 정리

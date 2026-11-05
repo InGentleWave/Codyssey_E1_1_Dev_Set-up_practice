@@ -175,11 +175,10 @@
   - [ ] 포트 또는 실행 모드를 환경 변수로 지정 [증거](./evidences/command-log.md#포트-또는-실행-모드를-환경-변수로-지정)
   - [ ] 값을 바꿔 실행하고 변경 전후 동작 차이 기록 [증거](./evidences/command-log.md#값을-바꿔-실행하고-변경-전후-동작-차이-기록)
   - [ ] 코드와 설정 분리의 이점 정리 [증거](./evidences/command-log.md#코드와-설정-분리의-이점-정리)
-- [ ] GitHub SSH 키 설정 [증거](./evidences/command-log.md#github-ssh-키-설정)
-  - [ ] Windows에서 SSH 키를 생성하고 공개 키를 GitHub에 등록 [키생성로그](./evidences/command-log.md#windows에서-ssh-키를-생성) [키등록캡처](./evidences/github-ssh-key-add.png)
-  - [ ] 원격 주소를 SSH로 바꾸고 푸시 성공 결과 기록 [증거](./evidences/command-log.md#원격-주소를-ssh로-바꾸고-푸시-성공-결과-기록)
-  - [ ] HTTPS와 SSH 키 인증의 차이 정리 [증거](./evidences/command-log.md#https와-ssh-키-인증의-차이-정리)
-
+- [x] GitHub SSH 키 설정 [증거](./evidences/command-log.md#github-ssh-키-설정)
+  - [x] Windows에서 SSH 키를 생성하고 공개 키를 GitHub에 등록 [키생성로그](./evidences/command-log.md#windows에서-ssh-키를-생성) [키등록캡처](./evidences/github-ssh-key-add.png)
+  - [x] 원격 주소를 SSH로 바꾸고 푸시 성공 결과 기록 [증거](./evidences/command-log.md#원격-주소를-ssh로-바꾸고-푸시-성공-결과-기록)
+  
 ## 14. 최종 점검
 
 - [ ] 이 README의 모든 빈칸을 채움
