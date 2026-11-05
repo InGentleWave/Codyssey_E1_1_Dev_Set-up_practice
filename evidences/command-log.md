@@ -57,13 +57,15 @@ ant  bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sb
 
 ### 파일 복사 (cp), 파일 이동 또는 이름 변경 (mv)
 
+파일 복사 (cp)
 ```bash
-# 파일 복사 (cp)
 root@cdcdc0e4bd3c:/# cp -r /ant/spider /ant/dog
 root@cdcdc0e4bd3c:/# cd /ant
 root@cdcdc0e4bd3c:/ant# ls
 dog  spider
-# 파일 이동 (mv)
+```
+파일 이동 (mv)
+```bash
 root@cdcdc0e4bd3c:/ant# ls
 dog  spider
 root@cdcdc0e4bd3c:/ant# mv ./spider ./dog/
@@ -71,7 +73,9 @@ root@cdcdc0e4bd3c:/ant# ls
 dog
 root@cdcdc0e4bd3c:/ant# ls ./dog
 spider
-# 이름 변경 (mv)
+```
+이름 변경 (mv)
+```bash
 root@cdcdc0e4bd3c:/ant# ls ./dog
 spider
 root@cdcdc0e4bd3c:/ant# mv ./dog/spider ./ladybug
@@ -81,15 +85,17 @@ dog  ladybug
 
 ### 파일 삭제 (rm)(삭제 전후 목록 기록)
 
+삭제 전
 ```bash
-# 삭제 전
 root@cdcdc0e4bd3c:/ant# ls /ant /ant/dog
 /ant:
 dog  ladybug
 
 /ant/dog:
 cat
-# 삭제 후
+```
+삭제 후
+```bash
 root@cdcdc0e4bd3c:/ant# rm ./dog
 rm: cannot remove './dog': Is a directory
 root@cdcdc0e4bd3c:/ant# rm -r ./dog
@@ -298,8 +304,8 @@ ecfae3219076   ubuntu    "/bin/bash"   4 minutes ago   Exited (137) 2 minutes ag
 
 #### 운영: 로그 확인(예: docker logs), 리소스 확인(예: docker stats)
 
+로그 확인 (docker logs)
 ```powershell
-# 로그 확인 (docker logs)
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker logs elated_shockley
 
 Hello from Docker!
@@ -323,7 +329,9 @@ Share images, automate workflows, and more with a free Docker ID:
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
-# 리소스 확인 (docker stats)
+```
+리소스 확인 (docker stats)
+```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker stats mybox
 CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK I/O   PIDS
 cdcdc0e4bd3c   mybox     0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
@@ -335,19 +343,25 @@ cdcdc0e4bd3c   mybox     0.00%     0B / 0B             0.00%     0B / 0B   0B / 
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a
 CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                       PORTS     NAMES
 cdcdc0e4bd3c   ubuntu    "/bin/bash"   53 minutes ago   Exited (137) 3 seconds ago             mybox
-# 컨테이너 실행
+```
+컨테이너 실행
+```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker start mybox
 mybox
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a      
 CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS         PORTS     NAMES
 cdcdc0e4bd3c   ubuntu    "/bin/bash"   54 minutes ago   Up 3 seconds             mybox
-# 컨테이너 중지
+```
+컨테이너 중지
+```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker stop mybox
 mybox
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a     
 CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS                       PORTS     NAMES
 cdcdc0e4bd3c   ubuntu    "/bin/bash"   54 minutes ago   Exited (137) 4 seconds ago             mybox
-# 컨테이너 재시작
+```
+컨테이너 재시작
+```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker start mybox
 mybox
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a      
@@ -358,7 +372,9 @@ mybox
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a        
 CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS        PORTS     NAMES
 cdcdc0e4bd3c   ubuntu    "/bin/bash"   54 minutes ago   Up 1 second             mybox
-# 컨테이너 삭제
+```
+컨테이너 삭제
+```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker stop mybox
 mybox
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker rm mybox
@@ -435,7 +451,7 @@ f51cf60939c8   ubuntu    "/bin/bash"   About a minute ago   Exited (0) 4 seconds
 docker exec 컨테이너ID 명령어: 
 컨테이너에 메인 프로세스와 무관한 새 프로세스를 실행하여 명령어에 대한 출력값을 받고 프로세스를 종료함. -it(대화형) 옵션을 사용하여 bash등과 같은 대화형 쉘을 사용할 수 있음. 이 때 exit를 입력하면 쉘이 종료되고 메인 프로세스는 계속 실행이 유지됨.
 
-```console
+```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a
 CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES
 f51cf60939c8   ubuntu    "/bin/bash"   5 minutes ago   Up 4 minutes             mybox
@@ -462,8 +478,9 @@ var
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a
 CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES
 f51cf60939c8   ubuntu    "/bin/bash"   6 minutes ago   Up 4 minutes
-
-# docker exec -it 컨테이너ID 쉘 예시
+```
+docker exec -it 컨테이너ID 쉘 예시
+```console
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps -a
 CONTAINER ID   IMAGE     COMMAND       CREATED         STATUS         PORTS     NAMES
 f51cf60939c8   ubuntu    "/bin/bash"   9 minutes ago   Up 8 minutes             mybox
@@ -568,29 +585,33 @@ Status: Downloaded newer image for nginx:latest
 
 ### 9-2. Docker 볼륨 영속성 검증
 
-#### 삭제 전 데이터 준비
-
-##### 볼륨 생성/연결/검증 로그
-
+#### 볼륨 생성/연결/검증 로그
+진행 전 확인
 ```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker volume ls
 DRIVER    VOLUME NAME
-# 생성
+```
+생성
+```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker volume create mydata 
 mydata
-# 연결
+```
+연결
+```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d --name test1 -v mydata:/data nginx 
 1f1cf8ee9c066dff404401d0dc922af6bacaddbfeaf2ff8c685c495037893678
-# 볼륨 내 데이터 생성
+```
+볼륨 내 데이터 생성
+```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker exec test1 sh -c "echo 영속성 테스트 > /data/test.txt"
 ```
 
-##### 컨테이너 삭제 전 데이터 확인 기록 (데이터 값 또는 파일 내용 원문 포함)
+#### 컨테이너 삭제 전 데이터 확인 기록 (데이터 값 또는 파일 내용 원문 포함)
 
+볼륨 내 데이터 확인
 ```powershell
-# 볼륨 내 데이터 확인
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker exec test1 cat /data/test.txt
 영속성 테스트
 ```
@@ -617,16 +638,14 @@ PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d --name test2 -v mydata
 93e96c8ba0dd0a2bd75726bbdf7a741924e3a5f3c57b31e16c3bf37154ab8bcf
 ```
 
-#### 삭제 전/후 데이터 유지 검증
-
-##### 새 컨테이너에서 삭제 전과 동일한 데이터 확인 기록 (삭제 전 기록과 대조)
+#### 새 컨테이너에서 삭제 전과 동일한 데이터 확인 기록 (삭제 전 기록과 대조)
 
 ```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker exec test2 cat /data/test.txt
 영속성 테스트
 ```
 
-##### 볼륨을 연결하지 않은 대조용 컨테이너에서 같은 경로를 확인하여 데이터가 없음을 기록
+#### 볼륨을 연결하지 않은 대조용 컨테이너에서 같은 경로를 확인하여 데이터가 없음을 기록
 
 ```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker run -d --name test3 nginx
@@ -636,21 +655,11 @@ PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> docker exec test3 cat /data/test.txt
 cat: /data/test.txt: No such file or directory
 ```
 
-## 11. 보안 및 개인정보
+## 11. 트러블 슈팅
 
-- 이 문서, 로그, 스크린샷에는 토큰, 비밀번호, 개인키, 인증 코드, 개인 이메일 주소를 포함하지 않습니다.
-- 마스킹 형식: (기록, 예: ****-****)
-- 민감정보가 노출된 경우의 처리 내역: (기록, 없으면 "해당 없음")
+### 11-1. 문제1
 
-### README.md, command-log.md, 캡처에서 토큰, 비밀번호, 개인키, 인증 코드, 개인 이메일 검색
-### 발견된 항목 마스킹 또는 제거
-### 노출된 적이 있다면 제거 및 재발급 내역을 15번 섹션에 기록
-
-## 12. 트러블 슈팅
-
-### 12-1. 문제1
-
-#### 12-1-1. 문제 및 원인 가설
+#### 11-1-1. 문제 및 원인 가설
 
 ```powershell
 # Docker 커스텀 이미지 빌드 시도
@@ -678,7 +687,7 @@ Dockerfile:2
 ERROR: failed to build: failed to solve: failed to compute cache key: failed to calculate checksum of ref t8rlv3xuwy8z383fhde6y0ebk::hwpet34bujgaz43b9i89s8fdd: "/src/index.html": not found
 ```
 
-#### 12-1-3. 확인
+#### 11-1-3. 확인
 
 ```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> ls
@@ -724,7 +733,7 @@ Mode                 LastWriteTime         Length Name
 -a----      2026-11-04   오후 4:24            302 index.html                    
 ```
 
-#### 12-1-4. 해결
+#### 11-1-4. 해결
 
 ```powershell
 PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\evidences> docker build -f ./Dockerfile -t exam ../
@@ -756,9 +765,9 @@ my-web:latest        de28cc6696af        241MB         63.9MB
 ubuntu:latest        6a06111c3b0a        163MB         45.9MB    U   
 ```
 
-### 12-2. 문제2
+### 11-2. 문제2
 
-#### 12-2-3. 확인
+#### 11-2-3. 확인
 
 ```bash
 $ git config user.name songdajeon
@@ -768,7 +777,7 @@ $ pwd
 /c/Users/<USER>
 ```
 
-#### 12-2-4. 해결
+#### 11-2-4. 해결
 
 ```bash
 $ cd ./<FOLDER>/<PROJECT>/E1_1
@@ -780,7 +789,9 @@ $ git config user.email <EMAIL>
 
 $ git config init.defaultBranch main
 
-# 초반 글로벌 설정 후 원격 연결 이후, 로컬 설정 새로 한 후의 리스트
+```
+(초반 글로벌 설정 후 원격 연결 이후, 로컬 설정 새로 한 후의 리스트)
+```bash
 $ git config --list
 diff.astextplain.textconv=astextplain
 filter.lfs.clean=git-lfs clean -- %f
@@ -810,31 +821,333 @@ branch.main.remote=origin
 branch.main.merge=refs/heads/main
 ```
 
-## 13. 보너스 과제 (선택)
+## 12. 보너스 과제 (선택)
 
 ### Docker Compose 기초
 
-#### 단일 서비스용 docker-compose.yml을 작성
 #### Compose 실행 결과를 단일 컨테이너 실행과 비교해 기록
-#### 실행 설정을 파일로 문서화하는 이유 정리
+
+```powershell
+# docker compose로 빌드 및 실행
+# 사용 명령어 docker compose up -d --build
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\compose> docker compose up -d --build
+[+] Building 2.8s (9/9) FINISHED                                                                                
+ => [internal] load local bake definitions                                                                 0.0s
+ => => reading from stdin 568B                                                                             0.0s
+ => [internal] load build definition from Dockerfile                                                       0.0s
+ => => transferring dockerfile: 223B                                                                       0.0s
+ => [internal] load metadata for docker.io/library/nginx:stable-alpine                                     1.6s
+ => [internal] load .dockerignore                                                                          0.0s
+ => => transferring context: 2B                                                                            0.0s
+ => [internal] load build context                                                                          0.1s
+ => => transferring context: 384B                                                                          0.1s
+ => CACHED [1/2] FROM docker.io/library/nginx:stable-alpine@sha256:0e52bd054126cdc040b1276c0af347aeb02a41  0.1s
+ => => resolve docker.io/library/nginx:stable-alpine@sha256:0e52bd054126cdc040b1276c0af347aeb02a41b9cfe30  0.0s
+ => [2/2] COPY src/index.html /usr/share/nginx/html/index.html                                             0.1s
+ => exporting to image                                                                                     0.4s
+ => => exporting layers                                                                                    0.2s
+ => => exporting manifest sha256:c9bf45011aa2fe594a641b46afe5a2b7a72ecd46b8ef5e3b850651122d83e7a6          0.0s
+ => => exporting config sha256:edb60c550f231e835702d3f7f6da6b77ccd3638705e958b11e479621b0483b8b            0.0s
+ => => exporting attestation manifest sha256:422e3eaa9e87d984382823bb502cded23e419a423047be213b80211a478d  0.0s
+ => => exporting manifest list sha256:759a4fdc5313519d34b07286468e9b11d5e70401ab5b93e5c016c87acaf6485e     0.0s
+ => => naming to docker.io/library/my-web:1.0                                                              0.0s
+ => => unpacking to docker.io/library/my-web:1.0                                                           0.1s
+ => resolving provenance for metadata file                                                                 0.0s
+[+] up 3/3
+ ✔ Image my-web:1.0        Built                                                                            3.0s
+ ✔ Network compose_default Created                                                                          0.1s
+ ✔ Container compose-web-1 Started                                                                          0.6s
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\compose> docker compose ps
+NAME            IMAGE        COMMAND                   SERVICE   CREATED         STATUS         PORTS
+compose-web-1   my-web:1.0   "/docker-entrypoint.…"   web       7 seconds ago   Up 7 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
+
+# 단일 컨테이너 빌드 및 실행
+# 사용 명령어 :docker build -t <이미지명> <빌드컨텍스트>,docker run -d -p 8081:80 --name <컨테이너명> <이미지명>
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\compose> docker build -t single-build ../
+[+] Building 1.3s (7/7) FINISHED                                                                                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                              0.0s
+ => => transferring dockerfile: 223B                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/nginx:stable-alpine                                                            0.8s
+ => [internal] load .dockerignore                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                   0.0s
+ => [internal] load build context                                                                                                 0.0s
+ => => transferring context: 59B                                                                                                  0.0s
+ => [1/2] FROM docker.io/library/nginx:stable-alpine@sha256:0e52bd054126cdc040b1276c0af347aeb02a41b9cfe305d6094767ac30e97949      0.1s
+ => => resolve docker.io/library/nginx:stable-alpine@sha256:0e52bd054126cdc040b1276c0af347aeb02a41b9cfe305d6094767ac30e97949      0.0s
+ => CACHED [2/2] COPY src/index.html /usr/share/nginx/html/index.html                                                             0.0s
+ => exporting to image                                                                                                            0.2s
+ => => exporting layers                                                                                                           0.0s
+ => => exporting manifest sha256:1a862ffad037598012fe6ea62d7a4673340b970466b08620b46ce0c1e6192f75                                 0.0s
+ => => exporting config sha256:29873a6905aef2586fb4641523132c40831c44db6dafc4996f977516cc74a388                                   0.0s
+ => => exporting attestation manifest sha256:8543db95fba99d392a06ec63979ab50a2a6bc9774ed8a526418dd72d17017459                     0.0s
+ => => exporting manifest list sha256:4949af2e52bbc86104f22cd91e015fc79610412aaab5d027fb3f45d4ec8cc830                            0.0s
+ => => naming to docker.io/library/single-build:latest                                                                            0.0s
+ => => unpacking to docker.io/library/single-build:latest                                                                         0.0s
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\compose> docker images
+                                                                                                                  i Info →   U  In Use
+IMAGE                 ID             DISK USAGE   CONTENT SIZE   EXTRA
+exam2:latest          63c27b4f2cef        177MB         43.3MB    U   
+exam:latest           792e89032071       92.7MB         26.1MB    U   
+hello-world:latest    c567b231f656       25.9kB         9.49kB        
+my-web:1.0            759a4fdc5313       92.7MB         26.1MB    U   
+my-web:latest         de28cc6696af        241MB         63.9MB        
+nginx:latest          5ab5b0b01097        243MB         66.8MB    U   
+single-build:latest   4949af2e52bb       92.7MB         26.1MB        
+ubuntu:latest         6a06111c3b0a        163MB         45.9MB        
+
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\compose> docker run -d -p 8081:80 --name single-build-web single-build
+a688c7f29e2cba8b3fdc490d242a900d639fc85b323f5f3a2315e7701b63ef34
+
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\compose> docker ps
+CONTAINER ID   IMAGE          COMMAND                   CREATED         STATUS         PORTS                                     NAMES
+a688c7f29e2c   single-build   "/docker-entrypoint.…"   4 seconds ago   Up 3 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   single-build-web
+ed5a488ad17e   my-web:1.0     "/docker-entrypoint.…"   7 minutes ago   Up 7 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   compose-web-1
+```
 
 ### Docker Compose 멀티 컨테이너
 
 #### 웹 서버와 보조 서비스 1개 이상을 함께 실행
-#### 웹 컨테이너에서 서비스 이름으로 접속되는지 확인하고 출력 기록
-#### 서비스 이름 기반 컨테이너 간 통신 정리
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose up -d --build
+[+] Building 1.3s (9/9) FINISHED                                                                                                       
+ => [internal] load local bake definitions                                                                                        0.0s
+ => => reading from stdin 574B                                                                                                    0.0s
+ => [internal] load build definition from Dockerfile                                                                              0.0s
+ => => transferring dockerfile: 223B                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/nginx:stable-alpine                                                            0.4s
+ => [internal] load .dockerignore                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                   0.0s
+ => [internal] load build context                                                                                                 0.0s
+ => => transferring context: 59B                                                                                                  0.0s
+ => [1/2] FROM docker.io/library/nginx:stable-alpine@sha256:0e52bd054126cdc040b1276c0af347aeb02a41b9cfe305d6094767ac30e97949      0.1s
+ => => resolve docker.io/library/nginx:stable-alpine@sha256:0e52bd054126cdc040b1276c0af347aeb02a41b9cfe305d6094767ac30e97949      0.1s
+ => CACHED [2/2] COPY src/index.html /usr/share/nginx/html/index.html                                                             0.0s
+ => exporting to image                                                                                                            0.3s
+ => => exporting layers                                                                                                           0.0s
+ => => exporting manifest sha256:15a5753609cc05ba4fe16effb102ce48d59376bf9c3b48c3970a4bfd729c254b                                 0.0s
+ => => exporting config sha256:6ce490f2b2663cab0fd2405de299ef3c69ea24f8062e0ee15ac8c53acb1549ff                                   0.0s
+ => => exporting attestation manifest sha256:dfd5385878c20c43dc5257dc2bc9418b16bb48cdee8910348d4d302fbc6b7604                     0.0s
+ => => exporting manifest list sha256:6ef7e23123954405437414a6be4f19fa5ce3adab09f9b9752826b2f368acea38                            0.0s
+ => => naming to docker.io/library/my-web:1.0                                                                                     0.0s
+ => => unpacking to docker.io/library/my-web:1.0                                                                                  0.0s
+ => resolving provenance for metadata file                                                                                        0.0s
+[+] up 4/4
+ ✔ Image my-web:1.0                Built                                                                                           1.5s
+ ✔ Network multi-compose_default   Created                                                                                         0.1s
+ ✔ Container multi-compose-cache-1 Started                                                                                         1.1s
+ ✔ Container multi-compose-web-1   Started                                                                                         0.8s
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose ps
+NAME                    IMAGE            COMMAND                   SERVICE   CREATED         STATUS         PORTS
+multi-compose-cache-1   redis:7-alpine   "docker-entrypoint.s…"   cache     8 seconds ago   Up 6 seconds   6379/tcp
+multi-compose-web-1     my-web:1.0       "/docker-entrypoint.…"   web       8 seconds ago   Up 6 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
+```
+
+#### 컨테이너 간 네트워크 통신 확인
+- getent hosts: 호스트 이름을 IP 주소로 변환합니다. 출력에 cache의 IP 주소가 나오면 서비스 디스커버리가 동작한 것입니다.
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose exec web getent hosts cache
+172.18.0.2        cache  cache
+```
+
+- 먼저 web 컨테이너에 어떤 도구가 있는지 확인
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose exec web sh -c "which curl nc wget"
+/usr/bin/curl
+/usr/bin/nc
+/usr/bin/wget
+```
+
+- web 컨테이너에서 cache 컨테이너의 포트가 확인 가능한지 체크합니다.
+  - nc: 네트워크 연결을 확인하는 도구입니다.
+  - -z: 데이터를 보내지 않고 포트 열림 여부만 확인합니다.
+  - -v: 결과를 자세히 출력합니다. open 또는 succeeded 문구가 나오면 연결 성공입니다.
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose exec web nc -zv cache 6379
+cache (172.18.0.2:6379) open
+```
+
+- Redis 자체의 응답은 cache 컨테이너에서 확인합니다. Redis 이미지에는 redis-cli가 포함되어 있습니다.
+  - redis-cli ping: Redis 서버에 연결해 응답을 요청합니다. PONG이 출력되면 서버가 정상 동작하는 것입니다.
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose exec cache redis-cli ping
+PONG
+```
+
+- 호스트에서 웹 서버 접속 확인
+  - PowerShell의 curl은 별칭이므로 curl.exe로 실행합니다.
+  - 웹 페이지가 출력되면 호스트 쪽 매핑도 정상입니다.
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> curl.exe http://localhost:8080
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>My First Container</title></head>
+<body>
+  <h1>안녕하세요, 바인드 마운트 호스트 변경 후 페이지입니다.</h1>
+  <p>이 페이지는 Docker 컨테이너 안에서 실행되고 있습니다.</p>
+</body>
+</html>
+```
 
 ### Compose 운영 명령어 습득
 
 #### up, down, ps, logs를 각각 실행하고 출력 기록
-#### Compose 명령 형태(docker compose 또는 docker-compose)와 버전 확인 후 기록
-#### ps, logs 중심의 상태 확인 루틴 정리
+docker compose up -d로 실행
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose up -d
+[+] up 3/3
+ ✔ Network multi-compose_default   Created                                                                                          0.0s
+ ✔ Container multi-compose-cache-1 Started                                                                                          0.4s
+ ✔ Container multi-compose-web-1   Started                                                                                          0.5s
+```
+
+docker compose ps로 상태 확인
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose ps
+NAME                    IMAGE            COMMAND                   SERVICE   CREATED         STATUS         PORTS
+multi-compose-cache-1   redis:7-alpine   "docker-entrypoint.s…"   cache     4 seconds ago   Up 3 seconds   6379/tcp
+multi-compose-web-1     my-web:1.0       "/docker-entrypoint.…"   web       4 seconds ago   Up 3 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp
+```
+
+docker compose logs로 로그 확인
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose logs
+cache-1  | 1:C 05 Nov 2026 11:26:48.734 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+cache-1  | 1:C 05 Nov 2026 11:26:48.734 * Redis version=7.4.12, bits=64, commit=00000000, modified=0, pid=1, just started
+web-1    | /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+web-1    | /docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+web-1    | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+web-1    | 10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+web-1    | 10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+web-1    | /docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+web-1    | /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+web-1    | /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+web-1    | /docker-entrypoint.sh: Configuration complete; ready for start up
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: using the "epoll" event method
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: nginx/1.30.6
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: OS: Linux 6.18.54.1-microsoft-standard-WSL2
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker processes
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 30
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 31
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 32
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 33
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 34
+cache-1  | 1:C 05 Nov 2026 11:26:48.734 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+cache-1  | 1:M 05 Nov 2026 11:26:48.734 * monotonic clock: POSIX clock_gettime
+cache-1  | 1:M 05 Nov 2026 11:26:48.736 * Running mode=standalone, port=6379.
+cache-1  | 1:M 05 Nov 2026 11:26:48.738 * Server initialized
+cache-1  | 1:M 05 Nov 2026 11:26:48.738 * Ready to accept connections tcp
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 35
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 36
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 37
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 38
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 39
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 40
+web-1    | 2026/11/05 11:26:48 [notice] 1#1: start worker process 41
+```
+
+docker compose down로 종료
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose down
+[+] down 3/3
+ ✔ Container multi-compose-web-1   Removed                                                                                          0.5s
+ ✔ Container multi-compose-cache-1 Removed                                                                                          0.3s
+ ✔ Network multi-compose_default   Removed                                                                                          0.2s
+```
+
+docker compose ps로 상태 확인
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\multi-compose> docker compose ps
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+```
 
 ### 환경 변수 활용
 
-#### 포트 또는 실행 모드를 환경 변수로 지정
 #### 값을 바꿔 실행하고 변경 전후 동작 차이 기록
-#### 코드와 설정 분리의 이점 정리
+변경 전 실행
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\env-var> docker compose up -d
+[+] up 2/2
+ ✔ Container env-var-cache-1 Running                                                                                                0.0s
+ ✔ Container env-var-web-1   Started                                                                                                0.7s
+```
+변경 전 정보
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\env-var> docker compose config
+name: env-var
+services:
+  cache:
+    image: redis:7-alpine
+    networks:
+      default: null
+  web:
+    environment:
+      APP_MODE: production
+    image: my-web:1.0
+    networks:
+      default: null
+    build:
+      context: C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1
+      dockerfile: Dockerfile
+    depends_on:
+      cache:
+        condition: service_started
+        required: true
+    ports:
+      - mode: ingress
+        target: 80
+        published: "8080"
+        protocol: tcp
+networks:
+  default:
+    name: env-var_default
+```
+환경 변수 변경 및 재실행
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\env-var> $env:HOST_PORT = "8081"
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\env-var> docker compose up -d   
+[+] up 2/2
+ ✔ Container env-var-cache-1 Running                                                                                                0.0s
+ ✔ Container env-var-web-1   Started
+```
+변경 후 정보
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1\env-var> docker compose config  
+name: env-var
+services:
+  cache:
+    image: redis:7-alpine
+    networks:
+      default: null
+  web:
+    environment:
+      APP_MODE: production
+    image: my-web:1.0
+    networks:
+      default: null
+    build:
+      context: C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1
+      dockerfile: Dockerfile
+    depends_on:
+      cache:
+        condition: service_started
+        required: true
+    ports:
+      - mode: ingress
+        target: 80
+        published: "8081"
+        protocol: tcp
+networks:
+  default:
+    name: env-var_default
+```
 
 ### GitHub SSH 키 설정
 

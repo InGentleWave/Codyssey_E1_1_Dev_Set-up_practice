@@ -1,0 +1,14 @@
+services:
+  web:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    image: my-web:1.0
+    ports:
+      - "${HOST_PORT}:80"
+    environment:
+      APP_MODE: "production"
+    depends_on:
+      - cache
+  cache:
+    image: redis:7-alpine
