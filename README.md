@@ -17,7 +17,7 @@
 - [10. Git 설정 및 GitHub 연동](#10-git-설정-및-github-연동)
 - [11. 보안 및 개인정보](#11-보안-및-개인정보)
 - [12. 트러블슈팅 기록](#12-트러블슈팅-기록)
-- [13. 보너스 과제](#13-보너스-과제-선택)
+- [13. 보너스 과제](#13-보너스-과제)
 - [14. 최종 점검](#14-최종-점검)
 - [15. 과제 목표 달성 설명](#15-과제-목표-달성-설명)
 - [16. 재현성 안내](#16-재현성-안내)
@@ -176,7 +176,7 @@
   - [ ] 값을 바꿔 실행하고 변경 전후 동작 차이 기록 [증거](./evidences/command-log.md#값을-바꿔-실행하고-변경-전후-동작-차이-기록)
   - [ ] 코드와 설정 분리의 이점 정리 [증거](./evidences/command-log.md#코드와-설정-분리의-이점-정리)
 - [ ] GitHub SSH 키 설정 [증거](./evidences/command-log.md#github-ssh-키-설정)
-  - [ ] Windows에서 SSH 키를 생성하고 공개 키를 GitHub에 등록 [증거](./evidences/command-log.md#windows에서-ssh-키를-생성하고-공개-키를-github에-등록)
+  - [ ] Windows에서 SSH 키를 생성하고 공개 키를 GitHub에 등록 [키생성로그](./evidences/command-log.md#windows에서-ssh-키를-생성) [키등록캡처](./evidences/github-ssh-key-add.png)
   - [ ] 원격 주소를 SSH로 바꾸고 푸시 성공 결과 기록 [증거](./evidences/command-log.md#원격-주소를-ssh로-바꾸고-푸시-성공-결과-기록)
   - [ ] HTTPS와 SSH 키 인증의 차이 정리 [증거](./evidences/command-log.md#https와-ssh-키-인증의-차이-정리)
 

@@ -838,6 +838,26 @@ branch.main.merge=refs/heads/main
 
 ### GitHub SSH 키 설정
 
-#### Windows에서 SSH 키를 생성하고 공개 키를 GitHub에 등록
+#### Windows에서 SSH 키를 생성
+
+```powershell
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> ssh-keygen -t ed25519 -C "215927699+InGentleWave@users.noreply.github.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (C:\Users\<USER>/.ssh/id_ed25519): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in C:\Users\<USER>/.ssh/id_ed25519
+Your public key has been saved in C:\Users\<USER>/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:<SHA256> 215927699+InGentleWave@users.noreply.github.com
+The key's randomart image is:
++--[ED25519 256]--+
+|<RANDOMART IMAGE>|
++----[SHA256]-----+
+
+PS C:\Users\<USER>\<FOLDER>\<PROJECT>\E1_1> cat ~/.ssh/id_ed25519.pub
+ssh-ed25519 <SSH-ED25519>
+```
+
 #### 원격 주소를 SSH로 바꾸고 푸시 성공 결과 기록
 #### HTTPS와 SSH 키 인증의 차이 정리
